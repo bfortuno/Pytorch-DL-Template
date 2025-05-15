@@ -1,0 +1,19 @@
+torch==2.2.0
+torchvision==0.17.0
+torchaudio==2.2.0
+lightning
+jupyter
+ipykernel
+matplotlib
+numpy
+pandas
+scipy
+scikit-learn
+tensorboard
+ipywidgets
+torchinfo
+tqdm
+# opencv-python-headless
+# seaborn
+# transformers
+# sentencepiece

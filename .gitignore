@@ -1,0 +1,18 @@
+# Data & artifacts
+/data/*
+!/data/README.md
+
+/checkpoints/
+/logs/
+/__pycache__/
+/*.pyc
+*.log
+
+# Jupyter & editor files
+.ipynb_checkpoints/
+*.swp
+.vscode/
+
+# Env
+.env
+.venv/
