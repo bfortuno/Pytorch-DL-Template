@@ -1,10 +1,23 @@
 #!/usr/bin/env python3
+"""
+Container management script for Docker Compose environments.
+
+Provides commands to start, enter, and stop Docker Compose containers for
+streamlined development workflows.
+"""
+
 import argparse
 import subprocess
 import sys
 
 
 def run_cmd(cmd):
+    """
+    Run a shell command with error handling.
+
+    Args:
+        cmd (list): The command to run as a list of strings.
+    """
     try:
         subprocess.run(cmd, check=True)
     except subprocess.CalledProcessError as e:
@@ -13,21 +26,36 @@ def run_cmd(cmd):
 
 
 def start_container():
+    """
+    Start the Docker Compose environment in detached mode.
+    """
     print("[INFO] Starting container in detached mode...")
     run_cmd(["docker", "compose", "up", "-d"])
 
 
 def enter_container(service):
+    """
+    Enter the shell of the specified container.
+
+    Args:
+        service (str): The name of the Docker Compose service to enter.
+    """
     print(f"[INFO] Entering container shell for service '{service}'...")
     run_cmd(["docker", "compose", "exec", service, "bash"])
 
 
 def stop_container():
+    """
+    Stop and remove the running Docker Compose environment.
+    """
     print("[INFO] Stopping and removing container...")
     run_cmd(["docker", "compose", "down"])
 
 
 def main():
+    """
+    Command-line interface for managing Docker Compose containers.
+    """
     parser = argparse.ArgumentParser(description="Manage Docker Compose containers.")
     subparsers = parser.add_subparsers(dest="command", required=True)
 

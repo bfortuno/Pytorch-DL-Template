@@ -1,3 +1,9 @@
+"""
+Main entry point for the PyTorch training template.
+
+This script checks for GPU availability and prints a test tensor.
+"""
+
 import torch
 
 if torch.cuda.is_available():
