@@ -9,11 +9,18 @@ ARG GID=1000
 # Install basic system tools
 RUN apt-get update && apt-get install -y \
     git curl wget sudo vim htop \
+    build-essential cmake pkg-config \
+    libjpeg-dev libpng-dev libtiff-dev \
+    libavcodec-dev libavformat-dev libswscale-dev \
+    libv4l-dev libxvidcore-dev libx264-dev \
+    libgtk-3-dev libatlas-base-dev gfortran \
+    python3-dev libgl1 libglib2.0-0\
     && groupadd -g $GID $USERNAME \
     && useradd -m -u $UID -g $GID -s /bin/bash $USERNAME \
     && usermod -aG sudo $USERNAME \
     && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
